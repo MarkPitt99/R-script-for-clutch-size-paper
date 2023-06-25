@@ -38,7 +38,8 @@ data$julian_1st_egg<-as.numeric(data$julian_1st_egg)
 data$weight_g<-as.numeric(data$weight_g)
 data$yolk_weight_g<-as.numeric(data$yolk_weight_g)
 data$LATEST_LAYING_ORDER<-as.factor(data$LATEST_LAYING_ORDER)
-##
+
+
 ## selecting only the columns that are needed for the analysis#####################
 data <- data %>%
   group_by(NESTBOX, EGG_LABEL, EXPERIMENTAL_GROUP) %>% 
@@ -50,7 +51,7 @@ allbroods<-read.xlsx("./data/CSM_18.07.2022.xlsx",
                      colNames=T,
                      sheet = 1)
 
-################performing a left join to combine the two datasets into one
+################performing a left join to combine the two datasets into one###########
 data<-left_join(x=data, y=allbroods%>%
                    select(IN_NEST_CLUTCH_SIZE, NESTBOX, julian_1st_egg, NUMBER_EGGS_LAID), by='NESTBOX')
 
@@ -71,7 +72,6 @@ meandata<-meandata%>%
   distinct(NESTBOX, EGG_LABEL, mean_volume,.keep_all = TRUE)%>%
   filter(mean_volume!=0)%>%
   filter(!NESTBOX%in%c(540, 558, 560))
-
 
 ########including clutch size in the models#############
 allbroods<-read.xlsx("./data/CSM_18.07.2022.xlsx",
@@ -98,7 +98,6 @@ meandata<-meandata%>%
   filter(!NESTBOX%in%c(540, 558, 560, 19, 20, 55, 529, 539, 571))#filtered nests where we only photographed a couple eggs or females abandoned
 
 ##################STATISTICAL MODELS#########################
-
 ##############total volume of egg produced models##################
 meandata$julian_1st_egg<-as.numeric(meandata$julian_1st_egg)
 
@@ -151,7 +150,7 @@ m4 <- lm(total_investment~
 lm4<-lrtest.default(m4,m1)#gives likelihood ratio for lay date
 
 
-#######Plotting the model predictions (from Model 2)#########
+#######Plotting the model predictions (from Model 3)#########
 newdat<-expand.grid(
   EXPERIMENTAL_GROUP=unique(meandata$EXPERIMENTAL_GROUP),
   LOCATION=unique(meandata$LOCATION),
@@ -164,7 +163,7 @@ newdat$total_investment<-{predict(m1, newdat, se.fit = T)}$fit###predicted value
 newdat$se <- {predict(m1, newdat, se.fit = T)}$se.fit####the associated standard errors
 
 #####plotting the predictions with the standard errors onto a ggplot##########
-PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, #this is so you can add your raw data points
+PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, 
                                                 y = total_investment, 
                                                 fill = EXPERIMENTAL_GROUP)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.60,
@@ -173,7 +172,7 @@ PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, #this is so you can a
              shape = 21,
              color = "white",
              alpha = 0.5) +
-  geom_linerange(data = newdat, ###this is where you include your dummy dataset prediction points and se
+  geom_linerange(data = newdat, 
                  aes(y = total_investment, 
                      ymin = total_investment - se, 
                      ymax = total_investment + se),
