@@ -199,7 +199,7 @@ newdat4 <-data.frame(newdat3,
 
 
 #####plotting the predictions with confidence intervals onto a ggplot##########
-PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, #this is so you can add your raw data points
+PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, 
                                                 y = volume, 
                                                 fill = EXPERIMENTAL_GROUP)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.60,
@@ -208,7 +208,7 @@ PREDICTED_PLOT<- ggplot(data = meandata, aes(x = LOCATION, #this is so you can a
              shape = 21,
              color = "white",
              alpha = 0.5) +
-  geom_linerange(data = newdat4, ###this is where you include your dummy dataset prediction points and se
+  geom_linerange(data = newdat4, 
                  aes(y = volume, 
                      ymin = plo, 
                      ymax = phi),
