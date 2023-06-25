@@ -56,7 +56,6 @@ CSM_$NUMBER_EGGS_LAID<-as.numeric(CSM_$NUMBER_EGGS_LAID)
 clutch.size<-as.data.frame(clutch.size)
 
 ##### Statistical Models######
-
 #########Model 1: With lay date fitted as a quadratic term########
 m0 <- lm(NUMBER_EGGS_LAID ~ 
            EXPERIMENTAL_GROUP : LOCATION + 
@@ -125,7 +124,7 @@ newdat<-left_join(x=newdat, y=newdatci%>%
                     by="NUMBER_EGGS_LAID")
 
 #####plotting the predictions with the confidence onto a ggplot##########
-PREDICTED_PLOT<- ggplot(data = clutch.size, aes(x = LOCATION, #this is so you can add your raw data points
+PREDICTED_PLOT<- ggplot(data = clutch.size, aes(x = LOCATION, 
                                                  y = NUMBER_EGGS_LAID, 
                                                  fill = EXPERIMENTAL_GROUP)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.70,
@@ -134,7 +133,7 @@ PREDICTED_PLOT<- ggplot(data = clutch.size, aes(x = LOCATION, #this is so you ca
              shape = 21,
              color = "white",
              alpha = 0.5) +
-  geom_linerange(data = newdat, ###this is where you include your dummy dataset prediction points and se
+  geom_linerange(data = newdat, 
                  aes(y = NUMBER_EGGS_LAID, 
                      ymin =lwr, 
                      ymax = upr),
