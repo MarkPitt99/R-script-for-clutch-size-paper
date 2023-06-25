@@ -177,7 +177,7 @@ m10 <- lmer(volume~
 lm7<-lrtest.default(m10,m6)#gives the likelihood ratio for the number of eggs laid
 
 
-#####Plotting the model predictions from Model 8 --> the minimal model#############
+#####Plotting the model predictions from Model 6 --> the minimal model#############
 newdat3<-expand.grid(
   LOCATION=levels(meandata$LOCATION),
   EXPERIMENTAL_GROUP=levels(meandata$EXPERIMENTAL_GROUP),
