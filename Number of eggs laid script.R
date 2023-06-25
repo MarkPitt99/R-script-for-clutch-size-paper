@@ -70,7 +70,7 @@ check_model(m0, panel=F)
 #######Model 2: With lay date fitted as a linear term#######
 m1<- lm(NUMBER_EGGS_LAID ~ 
           EXPERIMENTAL_GROUP*LOCATION+
-        scale(julian_1st_egg, scale = F),# to calculate intercept at mean jday
+        scale(julian_1st_egg, scale = F),
         data = clutch.size)
 summary(m1)
 check_model(m1, panel=F)
@@ -81,29 +81,29 @@ lrtest.default(m1,m0)#Gives the lrtest value for lay date fitted as a quadratic 
 ###Model 3: model with no interaction included
 m2<- lm(NUMBER_EGGS_LAID ~ 
           EXPERIMENTAL_GROUP+LOCATION+
-          scale(julian_1st_egg, scale = F),# to calculate intercept at mean jday
+          scale(julian_1st_egg, scale = F),
         data = clutch.size)
 lm1<-lrtest(m1, m2)#gives the likelihood ratio test for the location*treatment group interaction 
 
 ###Model 4: model with no experimental group included
 m3<- lm(NUMBER_EGGS_LAID ~ 
           LOCATION+
-          scale(julian_1st_egg, scale = F),# to calculate intercept at mean jday
+          scale(julian_1st_egg, scale = F),
         data = clutch.size)
 lm2<-lrtest(m3, m2)#gives likelihood ratio test for experimental group
 
 ###Model 5: model with no location effect
 m4<- lm(NUMBER_EGGS_LAID ~ 
           EXPERIMENTAL_GROUP+
-          scale(julian_1st_egg, scale = F),# to calculate intercept at mean jday
+          scale(julian_1st_egg, scale = F),
         data = clutch.size)
 lm3<-lrtest(m4, m2)#gives likelihood ratio for Location
 
 ###Model 6: model with no lay date
 m5<- lm(NUMBER_EGGS_LAID ~ 
-          EXPERIMENTAL_GROUP*LOCATION,# to calculate intercept at mean jday
+          EXPERIMENTAL_GROUP*LOCATION,
         data = clutch.size)
-lm4<-lrtest(m5, m2)#gives chi-squared for Lay date
+lm4<-lrtest(m5, m2)#gives likelihood ratio for Lay date
 
 #######Plotting the model predictions from Model 2#########
 newdat<-expand.grid(
@@ -123,7 +123,7 @@ newdat<-left_join(x=newdat, y=newdatci%>%
                       select(lwr, upr, NUMBER_EGGS_LAID),
                     by="NUMBER_EGGS_LAID")
 
-#####plotting the predictions with the confidence onto a ggplot##########
+#####plotting the predictions with the confidence intervals onto a ggplot##########
 PREDICTED_PLOT<- ggplot(data = clutch.size, aes(x = LOCATION, 
                                                  y = NUMBER_EGGS_LAID, 
                                                  fill = EXPERIMENTAL_GROUP)) +
@@ -228,7 +228,7 @@ m3b <- lm(NUMBER_EGGS_LAID ~
 lm3b<-lrtest(m3b,m1b)#gives likelihood ratio for treatment
 
 
-###############Differences in lay date between treatment groups############
+###############Part 3: Differences in lay date and hatch date between treatment groups############
 ##Model 15: Differences in first egg date between treatment groups and Locations
 m6 <- lm(julian_1st_egg ~ 
              EXPERIMENTAL_GROUP +
