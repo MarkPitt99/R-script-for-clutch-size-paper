@@ -310,7 +310,7 @@ CI.lower = apply(merBoot$t, 2, function(x) as.numeric(quantile(x, probs=.025, na
 CI.upper = apply(merBoot$t, 2, function(x) as.numeric(quantile(x, probs=.975, na.rm=TRUE)))
 
 ######Simplifying the model and getting the lrtest values######
-###2. model with two way interactions
+###2. model with two way interactions only (removed three way interaction between egg laying group*treatment group*location)
 mgrouped2 <- lmer(volume~
              Group*LOCATION+EXPERIMENTAL_GROUP*Group+LOCATION*EXPERIMENTAL_GROUP+
              scale(NUMBER_EGGS_LAID, scale=F)+
@@ -376,7 +376,7 @@ m1.3 <- lmer(volume~
 lrtest3<-lrtest.default(m1.3,mgrouped2)
 
 
-###m12 is the minimal model --> excluded the experimental group*location interaction###
+###This is the minimal model --> excluded the experimental group*location interaction###
 minmod <- lmer(volume~
              Group*LOCATION+EXPERIMENTAL_GROUP+EXPERIMENTAL_GROUP*Group+
              scale(NUMBER_EGGS_LAID, scale=F)+
@@ -417,7 +417,7 @@ minmod.2 <- lmer(volume~
                filter(accurate==1), REML=F)
 lrtest.default(minmod.2,minmod)#for treatment*lay order group
 
-#model with no number eggs laid
+#model with no number of eggs laid
 minmod.3 <- lmer(volume~
               Group*LOCATION+EXPERIMENTAL_GROUP*Group+
               scale(as.numeric(julian_latest), scale = F)+
@@ -427,7 +427,7 @@ minmod.3 <- lmer(volume~
               filter(accurate==1), REML=F)
 lrtest.default(minmod.3,minmod)#for number eggs laid
 
-#MODEL WITH NO LAY DATE
+#Model with no lay date
 minmod.4 <- lmer(volume~
               Group*LOCATION+EXPERIMENTAL_GROUP*Group+
               scale(NUMBER_EGGS_LAID, scale=F)+
@@ -461,7 +461,7 @@ newdat5 <-data.frame(newdat5,
                      phi = newdat5$mean_volume+cmult*sqrt(pvar1))
 
 
-###plotting the predicted values onto a ggplot (note there's no confidence intervals at the moment on the predicted values)######################
+###plotting the predicted values onto a ggplot######################
 g3 <- ggplot(data = meandata%>%
                filter(LATEST_LAYING_ORDER<=9)%>%
                filter(accurate==1), 
