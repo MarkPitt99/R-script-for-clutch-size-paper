@@ -69,6 +69,12 @@ meandata<-meandata%>%
   filter(accurate==1)###filters out nests where the females abandoned their investment before clutch completion
 meandata$volume<-as.numeric(meandata$volume)
 
+#changing names of locations#
+meandata$LOCATION <- as.character(meandata$LOCATION)
+(meandata["LOCATION"][meandata["LOCATION"]=="Kelvingrove_park"]<-"Urban") #renaming sites: Kelvingrove = urban, SCENE = Forest
+(meandata["LOCATION"][meandata["LOCATION"]=="SCENE"]<-"Forest")
+meandata$LOCATION <- factor(meandata$LOCATION, levels=c("Urban", "Forest"))
+
 
 ##STATS MODELS#############
 ######MODEL 1: With lay date fitted as a quadratic term##############
