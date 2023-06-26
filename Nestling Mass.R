@@ -99,6 +99,8 @@ data$AGE <- factor(data$AGE, levels=c("2", "6", "12"))
 (data["site_rearing"][data["site_rearing"]=="Kelvingrove_park"]<-"Urban")
 (data["site_rearing"][data["site_rearing"]=="SCENE"]<-"Forest")
 
+data$site_rearing<-factor(data$site_rearing, levels=c("Urban", "Forest"))
+data$site_hatch<-factor(data$site_hatch, levels=c("Urban", "Forest"))
 
 ####################STATISTICAL MODELS############################
 
