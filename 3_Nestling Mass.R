@@ -3,8 +3,9 @@
 ##### SCRIPT AIM #####
 ##
 ##
-#' Script to analyse nestling mass at days 2, 6, and 12
-#' 
+#Script to analyse nestling mass at days 2, 6, and 12
+
+#The models on day 2 body mass are presented in figure 4 in the main manuscript, while body mass at days 6 and 12 are in the supplemntary materials
 ##
 ##
 ##
