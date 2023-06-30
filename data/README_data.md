@@ -1,5 +1,4 @@
----
----
+
 ---
 
 # **Dataset for the paper:** "*Environmental constraints can explain clutch size differences between urban and forest blue tits: insights from an egg removal experiment*"
@@ -12,15 +11,15 @@ Mark D. Pitt, Pablo Capilla-Lasheras, Norah S.S. Alhowiti, Claire J. Branston, E
 
 ------------------------------------------------------------------------
 
-For any further information, please contact: Mark Pitt, email: [markdavidpitt\@gmail.com](mailto:markdavidpitt@gmail.com){.email}
+For any further information, please contact: Mark Pitt, email: [markdavidpitt\@gmail.com](mailto:markdavidpitt@gmail.com)
 
-## [Description of data:]{.underline}
+## Description of data:
 
 The data from this project is contained in a single excel document consisting of seven sheets.
 
 ------------------------------------------------------------------------
 
-### [Sheet 1: ALL BROODS]{.underline}
+### Sheet 1: ALL BROODS
 
 This sheet contains information on the clutch sizes, brood sizes, number of fledglings, egg laying dates, and hatching dates for all the nests included in the project.
 
@@ -78,7 +77,7 @@ This sheet contains information on the clutch sizes, brood sizes, number of fled
 
 ------------------------------------------------------------------------
 
-### [Sheet 2: ALL PAIRS]{.underline}
+### Sheet 2: ALL PAIRS
 
 This sheet contains further information on the pairs of nests that were included in the cross-fostering manipulation, including more details on how long the manipulation lasted etc.,.
 
@@ -116,13 +115,13 @@ This sheet contains further information on the pairs of nests that were included
 
 ------------------------------------------------------------------------
 
-### [Sheet 3: ALL EGGS]{.underline}
+### Sheet 3: ALL EGGS
 
 Note that information in this sheet is replicated in sheet 7 (Egg volumes) - with this data being used in the project. Please see sheet 7 for details on what each column contains. This sheet functioned as a place to store information on when each egg was laid.
 
 ------------------------------------------------------------------------
 
-### [Sheet 4: ALL NESTLINGS]{.underline}
+### Sheet 4: ALL NESTLINGS
 
 This sheet provides further details on each individual nestling, including the unique BTO ring numbers they were assigned, as well as information on individual mortality.
 
@@ -158,7 +157,7 @@ This sheet provides further details on each individual nestling, including the u
 
 ------------------------------------------------------------------------
 
-### [Sheet 5: ALL NESTLING WEIGHTS]{.underline}
+### Sheet 5: ALL NESTLING WEIGHTS
 
 This sheet provides further details on each individual nestlings mass throughout the experimental period, as well as information on their wing and tarsus lengths.
 
@@ -196,7 +195,7 @@ This sheet provides further details on each individual nestlings mass throughout
 
 ------------------------------------------------------------------------
 
-### [Sheet 6: ADULTS]{.underline}
+### Sheet 6: ADULTS
 
 This sheet provides further details on the parents of each brood.
 
@@ -220,7 +219,7 @@ This sheet provides further details on the parents of each brood.
 
 ------------------------------------------------------------------------
 
-### [Sheet 7: Egg Volumes]{.underline}
+### Sheet 7: Egg Volumes
 
 This sheet provides further details on each egg that was recorded in the clutch, including when it was laid, its length, and width. Also includes all the egg volume measurements (egg volume was measured three times using three separate images of each egg).
 
