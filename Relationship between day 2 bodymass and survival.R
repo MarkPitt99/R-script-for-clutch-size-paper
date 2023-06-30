@@ -4,7 +4,7 @@
 ##
 ##
 #' Script to determine if a nestling body mass 2 days after hatching predicts survival until fledging
-#' 
+#These models are presented in the supplemntary materials, not in the main manuscript
 ##
 ##### libraries #####
 library(lubridate)
