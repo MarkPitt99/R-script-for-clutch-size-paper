@@ -1,4 +1,4 @@
-####Script Aim: To analyse the number of eggs laid#########
+####Script Aim: To analyse the number of eggs laid in both treatment groups (experimental or control) in the urban and forest habitat#########
 
 #########installing the necessary packages#####
 install.packages("lubridate")
