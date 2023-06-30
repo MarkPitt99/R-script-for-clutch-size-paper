@@ -57,7 +57,7 @@ This sheet contains information on the clutch sizes, brood sizes, number of fled
 
 -   Column Q: **NUMBER_EGGS_LAID** - The total number of eggs laid by a female.
 
--   Column R: **EGGS_DAY3_PREMANIPULATION** - The number of eggs in the nest two days after the first chick hatched (day 3).
+-   Column R: **EGGS_DAY3_PREMANIPULATION** - The number of eggs in the nest three days after the first chick hatched (day 2).
 
 -   Column S: **NUMBER_HATCHED_EGGS** - The number of eggs that hatched in the nest.
 
