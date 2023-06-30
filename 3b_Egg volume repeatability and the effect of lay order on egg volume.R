@@ -1,8 +1,8 @@
 ##
 ##
-## R Script to calculate the repeatability of the egg volume measurements and the effect of laying order on egg volume####
+## R Script to calculate the repeatability of the egg volume measurements and to investigate the effect of laying order on egg volume in the urban and forest habitat####
 ##
-##
+
 ##### libraries #####
   library(lubridate)
   library(dplyr)
