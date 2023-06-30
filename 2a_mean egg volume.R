@@ -1,6 +1,6 @@
 ##
-## Script to calculate average egg volume--> not accounting for lay order####
-##
+## Script to calculate the effect of habitat and treatment group on egg volume--> when not accounting for lay order####
+##For information on the repetability of the egg volume measurements, please see script 2b
 ##
 ##
 ##
