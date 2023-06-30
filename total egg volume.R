@@ -1,7 +1,7 @@
 ##
 ##
 ## Script to calculate total egg volume produced by a female##############
-##
+##These models are presented in the supplementary materials, not in the main manuscript
 ##Libraries#####
 library(lubridate)
 library(dplyr)
