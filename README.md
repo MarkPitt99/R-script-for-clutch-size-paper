@@ -1,6 +1,8 @@
 # Urban environmental constraints and clutch size in blue tits
 
+
 This repository contains the materials (data and code) used in a project investigating whether urban and forest blue tits respond differently to an egg removal manipulation experiment.
+
 ------------------------------------------------------------------------
 
 Mark D. Pitt, Pablo Capilla-Lasheras, Norah S.S. Alhowiti, Claire J. Branston, Eugenio Carlon, Jelle J. Boonekamp, Davide M. Dominoni. **Environmental constraints can explain clutch size differences between urban and forest blue tits: insights from an egg removal experiment**. *bioRxiv*. <DOI:10.1101/2023.01.05.522710>
