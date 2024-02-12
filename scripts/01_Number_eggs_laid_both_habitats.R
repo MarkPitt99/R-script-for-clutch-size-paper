@@ -228,9 +228,9 @@ df_predict$NUMBER_EGGS_LAID <- {
   }$fit
 
 # associated standard errors
-df_predict$se <- { # 95%CI
+df_predict$se <- { 
   predict(number_eggs_model_cmpoisson, df_predict, type = 'response', se.fit = T)
-  }$se.fit * 1.96
+  }$se.fit 
 
 ##
 ## plot with model predictions
@@ -270,7 +270,7 @@ plot_figure2 <- ggplot(data = data,
         legend.text=element_text(size=13)) +
   scale_fill_manual(name = "Experimental Group", values = c("#67a9cf", "pink")) +
   scale_color_manual(name = "Experimental Group", values = c("#67a9cf", "pink")) +
-  labs(x = "Habitat", y = "Number of eggs laid ± 95%CI")
+  labs(x = "Habitat", y = "Number of eggs laid ± SE")
 
 # to save plot
 ggsave(filename = "./plots/Figure2.png",

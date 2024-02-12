@@ -118,7 +118,7 @@ summary(nestling_count_model_full)
 ##
 ##
 nestling_count_model <- glmmTMB(cbind(number_chicks_alive, failed_nestlings) ~
-                                     EXPERIMENTAL_GROUP:HABITAT:time_point+
+                                     #EXPERIMENTAL_GROUP:HABITAT:time_point+
                                      HABITAT:time_point+
                                      EXPERIMENTAL_GROUP:time_point+
                                      EXPERIMENTAL_GROUP:HABITAT+
@@ -139,12 +139,62 @@ summary(nestling_count_model)
 
 ##
 ##
+##### model without (non sign) 3-way interaction #####
+##
+##
+nestling_count_model01 <- glmmTMB(cbind(number_chicks_alive, failed_nestlings) ~
+                                  #EXPERIMENTAL_GROUP:HABITAT:time_point+
+                                  HABITAT:time_point+
+                                  EXPERIMENTAL_GROUP:time_point+
+                                  EXPERIMENTAL_GROUP:HABITAT+
+                                  
+                                  EXPERIMENTAL_GROUP +
+                                  HABITAT +
+                                  time_point +
+                                  
+                                  scale(julian_hatch_date, scale = F) +
+                                  (1|NESTBOX),
+                                family = binomial,
+                                data = df_model)
+
+drop1(nestling_count_model01, test = 'Chisq')
+summary(nestling_count_model01)
+
+#####
+
+##
+##
+##### model without (non sign) 2-way interaction #####
+##
+##
+nestling_count_model02 <- glmmTMB(cbind(number_chicks_alive, failed_nestlings) ~
+                                    #EXPERIMENTAL_GROUP:HABITAT:time_point+
+                                    HABITAT:time_point+
+                                    EXPERIMENTAL_GROUP:time_point+
+                                    #EXPERIMENTAL_GROUP:HABITAT+
+                                    
+                                    EXPERIMENTAL_GROUP +
+                                    HABITAT +
+                                    time_point +
+                                    
+                                    scale(julian_hatch_date, scale = F) +
+                                    (1|NESTBOX),
+                                  family = binomial,
+                                  data = df_model)
+
+drop1(nestling_count_model02, test = 'Chisq')
+summary(nestling_count_model02)
+
+#####
+
+##
+##
 ##### Table of results #####
 ##
 ##
 
 ## base table
-nestling_count_table00 <- nestling_count_model %>%
+nestling_count_table00 <- nestling_count_model02 %>%
   tbl_regression(intercept = T,
                  label = list(
                    `(Intercept)` = "Intercept",
@@ -184,7 +234,7 @@ nestling_count_table <- nestling_count_table00 %>%
 
 ##
 ## save table
-gtsave(nestling_count_table, "./tables/TABLE S10.html")
+gtsave(nestling_count_table, "./tables/TABLE S9.html")
 
 #####
 
@@ -208,13 +258,13 @@ df_predict$julian_hatch_date <- ifelse(df_predict$HABITAT == 'urban',
 
 # calculate predicted values and associated 95% confidence intervals
 df_predict$number_chicks_alive_prop <- {
-  predict(nestling_count_model, df_predict, re.form = NA, se.fit = T, type = 'link')
+  predict(nestling_count_model, df_predict, re.form = NA, se.fit = T, type = 'response')
 }$fit
 
 # associated standard errors
-df_predict$ci <- { # 95%CI
-  predict(nestling_count_model, df_predict, type = 'link', se.fit = T)
-}$se.fit * 1.96
+df_predict$ci <- { 
+  predict(nestling_count_model, df_predict, type = 'response', se.fit = T)
+}$se.fit
 
 
 df_means <- df_model %>% 
@@ -224,9 +274,9 @@ df_means <- df_model %>%
 df_predict <- left_join(x = df_predict,
                         y = df_means,
                         by = c('HABITAT', 'EXPERIMENTAL_GROUP', 'time_point')) %>% 
-  mutate(number_chicks_alive = boot::inv.logit(number_chicks_alive_prop) * IN_NEST_CLUTCH_SIZE,
-         number_chicks_alive_low = boot::inv.logit(number_chicks_alive_prop-ci) * IN_NEST_CLUTCH_SIZE,
-         number_chicks_alive_high = boot::inv.logit(number_chicks_alive_prop+ci) * IN_NEST_CLUTCH_SIZE)
+  mutate(number_chicks_alive = number_chicks_alive_prop * IN_NEST_CLUTCH_SIZE,
+         number_chicks_alive_low = (number_chicks_alive_prop-ci) * IN_NEST_CLUTCH_SIZE,
+         number_chicks_alive_high = (number_chicks_alive_prop+ci) * IN_NEST_CLUTCH_SIZE)
 
 
 ##
@@ -239,9 +289,19 @@ level_order <- c('Urban', 'Forest')
 nestling_count <- ggplot(data = df_model, 
        aes(x = time_point, 
            y = number_chicks_alive, 
-           colour = EXPERIMENTAL_GROUP)) +
+           fill = EXPERIMENTAL_GROUP)) +
   facet_grid(~factor(HABITAT2, level = level_order)) +
-  geom_point(position = position_jitterdodge(jitter.width = 0.15, dodge.width = 0.5),
+  geom_line(data = df_predict, 
+            aes(x = time_point, 
+                y = number_chicks_alive, 
+                group = EXPERIMENTAL_GROUP,
+                color = EXPERIMENTAL_GROUP),
+            position = position_dodge(width = 0.50)) +
+  scale_color_manual(name = "Treatment group", values = c("#67a9cf", "pink")) +
+  geom_point(position = position_jitterdodge(jitter.width = 0.15, 
+                                             dodge.width = 0.5),
+             color= 'white',
+             shape = 21,
              alpha = 0.5, 
              size=3) +
   geom_errorbar(data = df_predict, 
@@ -258,12 +318,6 @@ nestling_count <- ggplot(data = df_model,
              color = "black", 
              size = 8,
              shape = 21) +
-  geom_line(data = df_predict, 
-            aes(x = time_point, 
-                y = number_chicks_alive, 
-                group = EXPERIMENTAL_GROUP,
-                color = EXPERIMENTAL_GROUP),
-            position = position_dodge(width = 0.50)) +
   theme_classic() + 
   theme(axis.title=element_text(size=20),
         axis.text=element_text(size=15)) +
@@ -274,7 +328,6 @@ nestling_count <- ggplot(data = df_model,
         legend.text=element_text(size=20),
         strip.text = element_text(size=20)) +
   scale_fill_manual(name = "Treatment group", values = c("#67a9cf", "pink")) +
-  scale_color_manual(name = "Treatment group", values = c("#67a9cf", "pink")) +
   labs(x = "Age (days after hatching)", y = "Number of nestlings alive")
 
 

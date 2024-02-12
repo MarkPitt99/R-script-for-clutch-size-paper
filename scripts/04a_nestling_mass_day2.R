@@ -164,7 +164,7 @@ weight_d2_table <- weight_d2_table00 %>%
 
 ##
 ## save table
-gtsave(weight_d2_table, "./tables/TABLE S7.html")
+gtsave(weight_d2_table, "./tables/TABLE S6.html")
 
 #####
 
