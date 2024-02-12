@@ -296,3 +296,4 @@ number_eggs_model_cmpoisson_outlier <- glmmTMB(NUMBER_EGGS_LAID ~
                                                 mutate(remove = ifelse(HABITAT == 'forest' & NUMBER_EGGS_LAID < 7, 1, 0)) %>% 
                                                 filter(remove == 0))
 summary(number_eggs_model_cmpoisson_outlier)
+drop1(number_eggs_model_cmpoisson_outlier, test = 'Chisq')

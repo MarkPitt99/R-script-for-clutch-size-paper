@@ -22,6 +22,7 @@ library(DHARMa)   # v0.10.4
 library(gt)       # v0.9.0
 library(gtsummary)# v1.7.2
 library(ggplot2)  # v3.4.2
+library(emmeans)
 
 # function to include drop1 output in gtsummary tables
 source("./scripts/00_functions/PCL_drop1_output.R")
@@ -95,6 +96,30 @@ egg_volume_model <- lmer(volume ~
                          data = data)
 summary(egg_volume_model)
 drop1(egg_volume_model, test = 'Chisq')
+
+#####
+
+##
+##
+##### model re-code to run emmeans #####
+
+egg_volume_model_em <- lmer(volume ~
+                           LATEST_LAYING_ORDER:EXPERIMENTAL_GROUP:HABITAT +
+                           LATEST_LAYING_ORDER:EXPERIMENTAL_GROUP +
+                           LATEST_LAYING_ORDER:HABITAT +
+                           EXPERIMENTAL_GROUP:HABITAT +
+                           LATEST_LAYING_ORDER +
+                           EXPERIMENTAL_GROUP +
+                           HABITAT +
+                           NUMBER_EGGS_LAID +
+                           julian_latest_lay_date +
+                           (1|NESTBOX) +
+                           (1|eggID),
+                         data = data)
+
+em_slopes <- emtrends(egg_volume_model_em,  ~ EXPERIMENTAL_GROUP | HABITAT, 
+         var = 'LATEST_LAYING_ORDER')
+pairs(em_slopes)
 
 #####
 
