@@ -104,6 +104,13 @@ data %>%
             se_eggs = sd(NUMBER_EGGS_LAID)/sqrt(n()),
             n_eggs = n())
 ##
+data %>% 
+  group_by(HABITAT, EXPERIMENTAL_GROUP) %>% 
+  summarise(mean_eggs = mean(IN_NEST_CLUTCH_SIZE),
+            se_eggs = sd(IN_NEST_CLUTCH_SIZE)/sqrt(n()),
+            n_eggs = n())
+
+
 ## Model 1: all interactions included using 'normal' Poisson error distibution
 number_eggs_model_full_poisson <- glmmTMB(NUMBER_EGGS_LAID ~ 
                                              EXPERIMENTAL_GROUP : HABITAT + 
