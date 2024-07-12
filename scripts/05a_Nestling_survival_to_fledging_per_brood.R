@@ -90,9 +90,9 @@ df_model <- data %>%
 #summary data###
 df_model%>% 
   group_by(HABITAT, EXPERIMENTAL_GROUP, time_point) %>% 
-  summarise(mean_eggs = mean(number_chicks_alive,  na.rm = TRUE),
-            se_eggs = sd(number_chicks_alive, na.rm = TRUE)/sqrt(n()),
-            n_eggs = n())
+  summarise(mean_offspring = mean(number_chicks_alive,  na.rm = TRUE),
+            se_offspring = sd(number_chicks_alive, na.rm = TRUE)/sqrt(n()),
+            n_offspring = n())
 
 
 # model
