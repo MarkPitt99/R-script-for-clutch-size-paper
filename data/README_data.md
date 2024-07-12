@@ -15,65 +15,71 @@ For any further information, please contact: Mark Pitt, email: [markdavidpitt\@g
 
 ## Description of data:
 
-The data from this project is contained in a single excel document consisting of seven sheets.
+The data from this project is contained in a single excel document consisting of four sheets.
 
 ------------------------------------------------------------------------
 
 ### Sheet 1: ALL BROODS
 
-This sheet contains information on the clutch sizes, brood sizes, number of fledglings, egg laying dates, and hatching dates for all the nests included in the project.
+This sheet contains information on the clutch ID's, which analyses the clutch was included in, the clutch sizes, brood sizes, number of fledglings, egg laying dates, and hatching dates for all the nests included in the project.
 
 #### Key:
 
--   Column A: **ACTIVE**- Dictates whether a female completed egg laying. If clutch completed (1), if clutch abandoned (0).
+-   Column A: **analysis_total_number_eggs**- Dictates whether a clutch was included in the analysis investigating the number of eggs laid in both treatment groups in urban and forest habitats.
 
--   Column B: **EXPERIMENTAL_GROUP** - The treatment group nests were assigned. Either *EXPERIMENTAL* or *CONTROL*. Experimental nests had four eggs removed from the nest, control clutches had no eggs removed.
+-   Column B: **analysis_total_number_eggs_reason** - For clutches excluded from the analysis investigating the number of eggs laid, the explanation behind this removal is given in this column.
 
--   Column C: **CROSS_FOSTER_GROUP** - Dictates to which habitats nestlings were cross-fostered. Either *BETWEEN* or *WITHIN* or *NOT CROSS-FOSTERED*. Nestlings that were cross-fostered between habitats were urban-forest, while within habitat cross-fosters could be urban-urban or forest-forest.
+-   Column C: **analysis_egg_volume**- Dictates whether a clutch was included in the analysis investigating egg volume in both treatment groups in urban and forest habitats.
 
--   Column D: **NESTBOX** - The unique number identifier assigned to each nestbox. Each nestbox number represents a unique clutch ID.
+-   Column D: **analysis_egg_volume_reason** - For clutches excluded from the analysis investigating egg volume, the explanation behind this removal is given in this column.
 
--   Column E: **Provisioning_beh_recorded** - Whether footage on parental provisioning behaviour was obtained from the nest. Nests had either 2,1 or 0 bouts of footage.
+-   Column E: **analysis_nestling_survival** - Dictates whether a brood was included in the nestling survival analysis for both treatment groups in urban and forest habitats.
 
--   Column F: **Mother_ID** - the unique BTO ring number assigned to the mother caught from a nestbox.
+-   Column F: **analysis_nestling_survival_reason** - For broods excluded from the analysis investigating nestling survival, the explanation behind this removal is given in this column.
 
--   Column G: **FATHER_ID** - the unique BTO ring number assigned to the father caught from a nestbox.
+-   Column G: **EXPERIMENTAL_GROUP** - The treatment group nests were assigned. Either *EXPERIMENTAL* or *CONTROL*. Experimental nests had four eggs removed from the nest, control clutches had no eggs removed.
 
--   Column H: **LOCATION** - The habitat that the clutch was located. Either *KELVINGROVE* (the urban habitat) or *SCENE* (the forest habitat).
+-   Column H: **CROSS_FOSTER_GROUP** - Dictates to which habitats nestlings were cross-fostered. Either *BETWEEN* or *WITHIN* or *NOT CROSS-FOSTERED*. Nestlings that were cross-fostered between habitats were urban-forest, while within habitat cross-fosters could be urban-urban or forest-forest.
 
--   Column J: **PAIRED_NESTBOX** - The nestbox ID of the nest to where chicks from the brood were to be cross-fostered.
+-   Column I: **NESTBOX** - The unique number identifier assigned to each nestbox. Each nestbox number represents a unique clutch ID.
 
--   Column K: **julian_1st_egg** - The date when the first egg was recorded in a clutch. In Julian days (represented as the number of days since 01/01/2022), which is needed for the analysis.
+-   Column J: **LOCATION** - The location that the clutch was located. Either *KELVINGROVE* (the urban habitat) or *SCENE* (the forest habitat).
 
--   Column L: **1st_EGG_LAYING_DATE** - The date (dd/mm/yy) when the first egg was recorded in a clutch (dd/mm/yy). Converted to Julian days (see above).
+-   Column K: **HABITAT**- The habitat that the clutch was located. Either *urban* (Kelvingrove Park) or *forest* (SCENE). 
 
--   Column M: **EGGS_FIRST_VISIT** - The number of eggs recorded in the nest on the first egg laying check.
+-   Column L: **PAIRED_NESTBOX** - The nestbox ID of the nest to where chicks from the brood were to be cross-fostered.
 
--   Column N: **julian_hatch_date** - The date when hatching was first detected in a clutch. In Julian days (represented as the number of days since 01/01/2022), which is needed for the analysis.
+-   Column M: **julian_1st_egg** - The date when the first egg was recorded in a clutch. In Julian days (represented as the number of days since 01/01/2022), which is needed for the analysis.
 
--   Column O: **HATCH_DATE** - The date (dd/mm/yy) when hatching was first detected in a clutch. Converted to Julian days (see above).
+-   Column N: **1st_EGG_LAYING_DATE** - The date (dd/mm/yy) when the first egg was recorded in a clutch (dd/mm/yy). Converted to Julian days (see above).
 
--   Column P: **IN_NEST_CLUTCH_SIZE** - The final number of eggs that the female incubated IN the nest. For control treatment nests, this is equal to the number of eggs they laid. For experimental birds, this is equal to the number of eggs they laid - 4, as four eggs were removed from the clutch to manipulate laying effort.
+-   Column O: **EGGS_FIRST_VISIT** - The number of eggs recorded in the nest on the first egg laying check.
 
--   Column Q: **NUMBER_EGGS_LAID** - The total number of eggs laid by a female.
+-   Column P: **julian_hatch_date** - The date when hatching was first detected in a clutch. In Julian days (represented as the number of days since 01/01/2022), which is needed for the analysis.
 
--   Column R: **EGGS_DAY3_PREMANIPULATION** - The number of eggs in the nest three days after the first chick hatched (day 2).
+-   Column Q: **HATCH_DATE** - The date (dd/mm/yy) when hatching was first detected in a clutch. Converted to Julian days (see above).
 
--   Column S: **NUMBER_HATCHED_EGGS** - The number of eggs that hatched in the nest.
+-   Column R: **IN_NEST_CLUTCH_SIZE** - The final number of eggs that the female incubated IN the nest. For control treatment nests, this is equal to the number of eggs they laid. For experimental birds, this is equal to the number of eggs they laid - 4, as four eggs were removed from the clutch to manipulate laying effort.
 
--   Column T: **BROODSIZE_DAY3_PREMANIPULATION** - The number of chicks in the nest before cross-fostering took place.
+-   Column S: **NUMBER_EGGS_LAID** - The total number of eggs laid by a female.
 
--   Column U: **DATE_CROSSFOSTERING_MANIPULATION -** The date (dd/mm/yy) cross-fostering occurred.
+-   Column T: **EGGS_IN_NEST_DAY3_PRE_CF_MANIPULATION** - The number of eggs in the nest three days after the first chick hatched (day 2).
 
--   Column V: **TIME_CF_MANIPULATION** - The time at which cross-fostering occurred (hh:mm).
+-   Column U: **NUMBER_HATCHED_EGGS** - The number of eggs that hatched in the nest.
 
--   Column W: **BROODSIZE_DAY3_POSTMANIPULATION** - The number of chicks present in the nest after the cross-fostering occurred.
+-   Column V: **BROODSIZE_DAY3_PREMANIPULATION** - The number of chicks in the nest before cross-fostering took place.
 
--   Column X: **BROODSIZE_DAY7** - The number of chicks in the nest on day seven (six days after the first chick had hatched).
+-   Column W: **DATE_CROSSFOSTERING_MANIPULATION -** The date (dd/mm/yy) cross-fostering occurred.
 
--   Column Y: **BROODSIZE_DAY13** - The number of chicks in the nest on day thirteen (twelve days after the first chick had hatched).
+-   Column X: **TIME_CF_MANIPULATION** - The time at which cross-fostering occurred (hh:mm).
 
--   Column Z: **NUMBER_FLEDGLINGS** - The number of chicks that successfully fledged from the nest.
+-   Column Y: **BROODSIZE_DAY3_POSTMANIPULATION** - The number of chicks present in the nest after the cross-fostering occurred.
+
+-   Column Z: **BROODSIZE_DAY7** - The number of chicks in the nest on day seven (six days after the first chick had hatched).
+
+-   Column AA: **BROODSIZE_DAY13** - The number of chicks in the nest on day thirteen (twelve days after the first chick had hatched).
+
+-   Column AB: **NUMBER_FLEDGLINGS** - The number of chicks that successfully fledged from the nest.
 
 ------------------------------------------------------------------------
 
