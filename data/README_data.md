@@ -85,7 +85,7 @@ This sheet contains information on the clutch ID's, which analyses the clutch wa
 
 ### Sheet 2: Egg Volumes
 
-This sheet provides further details on each egg that was recorded in the clutch, including when it was laid, its length, and width. Also includes all the egg volume measurements (egg volume was measured three times using three separate images of each egg).
+This sheet provides further details on each egg that was recorded in the clutch, including when it was laid and all the egg volume measurements (egg volume was measured three times using three separate images of each egg).
 
 #### Key:
 
@@ -164,7 +164,7 @@ This sheet provides further details on each individual nestling, including the u
 
 ### Sheet 4: ALL NESTLING WEIGHTS
 
-This sheet provides further details on each individual nestlings mass throughout the experimental period, as well as information on their wing and tarsus lengths.
+This sheet provides further details on each individual nestlings mass throughout the experimental period.
 
 #### Key:
 
