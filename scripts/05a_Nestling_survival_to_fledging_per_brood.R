@@ -24,7 +24,7 @@ library(DHARMa)   # v0.10.4
 library(gt)       # v0.9.0
 library(gtsummary)# v1.7.2
 library(ggplot2)  # v3.4.2
-
+library(emmeans)
 # function to include drop1 output in gtsummary tables
 source("./scripts/00_functions/PCL_drop1_output.R")
 
@@ -86,6 +86,14 @@ df_model <- data %>%
                                   'BROODSIZE_DAY13' ~ 'Day13',
                                   'NUMBER_FLEDGLINGS' ~ 'Fledged'))) %>% 
   mutate(time_point = factor(time_point, levels = c('Day2', 'Day6', 'Day13', 'Fledged')))
+
+#summary data###
+df_model%>% 
+  group_by(HABITAT, EXPERIMENTAL_GROUP, time_point) %>% 
+  summarise(mean_eggs = mean(number_chicks_alive,  na.rm = TRUE),
+            se_eggs = sd(number_chicks_alive, na.rm = TRUE)/sqrt(n()),
+            n_eggs = n())
+
 
 # model
 nestling_count_model_full <- glmmTMB(cbind(number_chicks_alive, failed_nestlings) ~
@@ -184,6 +192,8 @@ nestling_count_model02 <- glmmTMB(cbind(number_chicks_alive, failed_nestlings) ~
 
 drop1(nestling_count_model02, test = 'Chisq')
 summary(nestling_count_model02)
+
+
 
 #####
 
