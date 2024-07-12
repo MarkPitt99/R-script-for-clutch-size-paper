@@ -17,6 +17,6 @@ The R code used is available in  [`scripts`](https://github.com/MarkPitt99/R-scr
 
 **Folders**:
 [`data`](https://github.com/MarkPitt99/R-script-for-clutch-size-paper/tree/main/data): contains the data files and a metadata file describing what each column in the dataset represents: 
-* [`Pitt_et_all_database.xlsx`](https://github.com/MarkPitt99/R-script-for-clutch-size-paper/blob/main/data/CSM_18.07.2022.xlsx): Dataset with information on the biometrics of blue tit eggs, nestlings and adults, alongside information on breeding success and individual survival.
+* [`Pitt_et_all_database.xlsx`](https://github.com/MarkPitt99/R-script-for-clutch-size-paper/blob/main/data/Pitt_et_all_database.xlsx): Dataset with information on the biometrics of blue tit eggs, nestlings and adults, alongside information on breeding success and individual survival.
 * [`README_data.md`](https://github.com/MarkPitt99/R-script-for-clutch-size-paper/blob/main/data/README_data.md): Metadata file with descriptions of the terms used in the dataset
 
